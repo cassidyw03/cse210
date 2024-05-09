@@ -1,14 +1,14 @@
-using System; 
-// using Internal;
-// we have to import everything
+// using System; 
+// // using Internal;
+// // we have to import everything
 
-Console.WriteLine("Hello, what is your name?!");
-// console is a class, writeLine is a method
-string name = Console.ReadLine();
-// reading what the useer typed into the console, saving it as a string
-// must declare data types
+// Console.WriteLine("Hello, what is your name?!");
+// // console is a class, writeLine is a method
+// string name = Console.ReadLine();
+// // reading what the user typed into the console, saving it as a string
+// // must declare data types
 
-Console.WriteLine($"Hello, {name}!");
+// Console.WriteLine($"Hello, {name}!");
 // python's f is c#'s $
 //  CANNOT USE SINGLE QUOTES
 
