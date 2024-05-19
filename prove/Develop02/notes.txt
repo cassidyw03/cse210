@@ -1,0 +1,2 @@
+pass by value = int, float, boolean, string
+pass by reference =  list, array, dictionary, function, class
