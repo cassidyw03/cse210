@@ -84,6 +84,7 @@ namespace ConsoleApplication1
                         Console.WriteLine("Choice 3 Completed!");
                         break;
                     case 4:
+                        // Save to file
                         Console.WriteLine("File Name? >>>");
                         fileName = Console.ReadLine();
                         journal.SaveToFile(fileName);

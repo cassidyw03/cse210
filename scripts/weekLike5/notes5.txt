@@ -1,0 +1,6 @@
+In c# list is an infinite size. You can add as many objects as you want to it. List<datatype>
+An array is fixed. []
+
+In Python lists use [], and arrays are called Array().
+
+True encapsulation needs pulic and private classes.
