@@ -1,8 +1,10 @@
 using System;
-using System.Data.SqlTypes;
 
 class Program
 {
+
+
+
     static void Main(string[] args)
     {
         // Menu menu = new Menu();
@@ -17,62 +19,16 @@ class Program
         //     }
         // }
 
-        Console.WriteLine("Welcome to Mindfulness.com! We offer 3 mindfulness activities to unwind with!  :)  Choose below!\n");
+        Console.WriteLine("Welcome to Mindfulness! We offer 3 mindfulness activities to unwind with!  :)  Choose below!\n");
 
-        Console.WriteLine(5);
-        Thread.Sleep(1000);
-         Console.WriteLine(4);
-        Thread.Sleep(1000);
-         Console.WriteLine(3);
-        Thread.Sleep(1000);
+        Animation breathAnim = new Animation('.', 10, 1000);
+        Breathing breath = new Breathing("Breath In", "Breath Out", "BREATHING ACTIVITY", "THIS IS THE BREATHING ACTIVITY DESCRIPTION", "END MESSAGE", 3000, breathAnim, 500);
+        Console.WriteLine("Write \"breathe\"");
+        string choice = Console.ReadLine();
+        if (choice == "breathe") {
+            breath.Run();
+        }
 
         Console.WriteLine("Done!");
-
-
-    
-
-        
-
-        // List<string> animations = new List<string>();
-        // animations.Add(".");
-        // animations.Add("..");
-        // animations.Add("...");
-        // animations.Add("");
-        // animations.Add(".");
-        // animations.Add("..");
-        // animations.Add("...");
-        // animations.Add("");
-
-        // foreach (string a in animations)
-        // {
-        //     Console.Write(a);
-        //     Thread.Sleep(1000);
-        //     Console.Write("\b \b");
-        // }
-
-
-        // DateTime startTime = DateTime.Now;
-        // DateTime endTime = startTime.AddSeconds(10);
-
-        // int i = 0;
-
-        // while (DateTime.Now < endTime)
-        // {
-        //     string a = animations[i];
-        //     Console.Write(a);
-        //     Thread.Sleep(1000);
-        //     Console.Write("\b \b");
-
-        //     i++;
-
-        //     if (i >= animations.Count)
-        //     {
-        //         i = 0;
-        //     }
-        // }
-
-        
-
-        // Console.WriteLine("Done!");
     }
 }

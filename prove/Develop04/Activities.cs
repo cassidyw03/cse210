@@ -1,17 +1,33 @@
-using System.Diagnostics;
+public abstract class Activity {
+    protected string _title;
+    protected string _endMessage;
+    protected string _description;
+    protected int _duration;
+    protected int _timeCount;
+    protected Animation _anim;
+    protected int _loadms;
 
-abstract class Activities {
-    private string _activityTitle;
-    private string _activityDescription;
-    private int _duration;
-    private string _endingMessage;
-
-    public Activities(string title, string description, int duration)
+    public Activity(string title, string description, string endMessage, int duration, Animation anim, int loadms)
     {
+        _title = title;
+        _endMessage = endMessage;
+        _description = description;
+        _duration = duration;
+        _anim = anim;
+        _loadms = loadms;
     }
 
-    public virtual void LoadAnimation(int seconds = 5, int speed = 200)
+    public void DisplayTitle() {
+        Console.WriteLine(_title);
+    }
 
-    public abstract void RunActivity();
+    public abstract void DisplayDescription();
 
+    public abstract void RunPrompts();
+
+    public void DisplayEndMessage() {
+        Console.WriteLine(_endMessage);
+    }
+
+    public abstract void Run();
 }
