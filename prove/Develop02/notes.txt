@@ -1,2 +1,8 @@
 pass by value = int, float, boolean, string
 pass by reference =  list, array, dictionary, function, class
+
+
+list[], array, fixed
+list<>, list, unset size
+
+child class has to implement abstract methods 
