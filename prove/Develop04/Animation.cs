@@ -1,5 +1,6 @@
 public class Animation {
     private char _character;
+
     private int _num;
     private int _ms;
     private List<string> _charsToWrite; 

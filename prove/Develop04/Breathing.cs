@@ -3,8 +3,9 @@ public class Breathing : Activity {
     private string _prompt1;
     private string _prompt2;
 
-    public Breathing(string prompt1, string prompt2, string title, string description, string endMessage, int duration, Animation anim, int loadms) 
-    : base(title, description, endMessage, duration, anim, loadms) {
+  // took out string endMessage here, also inherited from base
+    public Breathing(string prompt1, string prompt2, string title, string description, int duration, Animation anim, int loadms) 
+    : base(title, description, duration, anim, loadms) {
         _prompt1 = prompt1;
         _prompt2 = prompt2;
     }
@@ -23,6 +24,11 @@ public class Breathing : Activity {
 
     public override void DisplayDescription() {
         Console.WriteLine(_description);
+    }
+
+    public override string DisplayEndMessage() {
+        string _endMessage = Console.WriteLine("You have completed {} seconds of the Breathing Activity.");
+        Console.WriteLine(_endMessage);
     }
 
     public override void Run() {
