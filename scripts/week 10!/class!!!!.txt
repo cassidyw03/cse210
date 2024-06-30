@@ -1,0 +1,21 @@
+Serialization!
+
+Old School:
+import serialization library
+formats as binary 
+default is all public
+
+New School:
+import json file
+has to be public
+to serialize: JsonSerializer.Serialize
+in python--- cucumber turned to pickle=== pickling!!!, un-pickle to get cucumber back
+
+Reason:
+persistent storage
+user session data
+
+
+new version:::::: need a README package
+also needs an [JsonProperty] compiler attribute
+using Newtonsoft.Json;
