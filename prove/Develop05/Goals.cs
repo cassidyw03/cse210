@@ -2,12 +2,12 @@ using System.ComponentModel;
 using System.Diagnostics;
 using Microsoft.Win32;
 
-class Goals {
-    private string _name;
-    private int _points;
-    private string _description;
-    private int _yourPoints = 0;
-    private bool _completion;
+public abstract class Goals {
+    protected string _name;
+    protected int _points;
+    protected string _description;
+    protected int _yourPoints = 0;
+    protected bool _completion;
     protected string _checkBox = "[ ]";
 
 // constructor!
@@ -66,6 +66,13 @@ class Goals {
     public string GetCheckMark()
     {
         return _checkBox;
+    }
+
+    public abstract string GetStringRepresentation();
+
+    public virtual string GetDetailsString()
+    {
+        return $"{GetCheckMark()} {_name} - {_description}";
     }
     
 }

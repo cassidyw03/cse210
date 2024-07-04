@@ -1,16 +1,16 @@
-
+using System;
 
 public class SimpleGoal : Goals
 {
     // what is the name of the goal:
     // give a short description of it:
     // how many points are associated with this goal:
-    private string _typeOfGoal;
+    private string _type;
     private bool _isComplete = false;
 
     public SimpleGoal(string name, string description, int points, string goal) : base(name, description, points)
     {
-        _typeOfGoal = goal;
+        _type = goal;
     }
 
     public override void RecordEvent()
@@ -32,8 +32,10 @@ public class SimpleGoal : Goals
         _isComplete = true;
     }
 
+
+
     public override GetStringRepresentation()
     {
-        return $"{_typeOfGoal}: {_name} | {_description} | {_points} | {IsComplete()}";
+        return $"{_type}: {_name} | {_description} | {_points} | {IsComplete()}";
     }
 }
