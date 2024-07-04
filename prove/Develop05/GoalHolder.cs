@@ -1,14 +1,16 @@
 public class GoalHolder {
-    private List<Goals> _goals = new();
+    private List<Goals> _goals = new ();
     private int _score;
     private int _count = 0;
+    private string _folderPath = "savefolder/";
 
     public GoalHolder()
     {
 
     }
 
-    private string[] menuItems = {
+    protected string[] menuItems = 
+    {
         "Create New Goal",
         "List Goals",
         "Save Goals",
@@ -83,7 +85,7 @@ public class GoalHolder {
         }
         else if (type == 2)
         {
-            CheckListGoal checkListGoal = new(name: SetGoalName(), description: SetGoalDescription(), points: SetGoalPoint(), goal: goalOptions[type], target: SetCheckListCount(), bonus: SetBonusPoint());
+            ChecklistGoal checkListGoal = new(name: SetGoalName(), description: SetGoalDescription(), points: SetGoalPoint(), goal: goalOptions[type], target: SetCheckListCount(), bonus: SetBonusPoint());
             _goals.Add(checkListGoal);
         }
         else
@@ -111,6 +113,23 @@ public class GoalHolder {
         
     }
 
+    private void ListGoalDetails()
+    {
+        if (_goals.Count != 0)
+        {
+            foreach (Goals goal in _goals)
+            {
+                _count++;
+                Console.WriteLine($"{_count}. {goal.GetDetailsString()}");
+            }
+            _count = 0;
+        }
+        else 
+        {
+            Console.WriteLine("There are no goals in the list. Load your saved goals or create new ones!");
+        }
+    }
+
     private void RecordEvent()
     {
         ListGoals();
@@ -122,41 +141,65 @@ public class GoalHolder {
         goalDone.RecordEvent();
         _score += goalDone.GetYourPoints();
 
-        string message = ($"\n Yay! You have earned {goalDone.GetSetPoints} \n You now have {_score} points");
+        string message = $"\n Yay! You have earned {goalDone.GetSetPoints} \n You now have {_score} points";
         Console.WriteLine(message);
         // DisplayPlayerPoints();
     }
 
-    // setters
-    private string SetGoalName()
+    private void ListGoalsss()
     {
-        Console.Write("\nWhat is the name of the goal? : ");
-        string _goalname = Console.ReadLine();
-        return _goalname;
+        ListGoalDetails();   
     }
 
-    private int SetGoalPoint()
+    private void SaveGoal()
+    {
+        Console.Write("\nWhat would you like to name the file? : ");
+        string fileName = Console.ReadLine();
+
+        using StreamWriter saveGoals = new($"{_folderPath}{fileName}.txt");
+        saveGoals.WriteLine(_score);
+        foreach (Goals goal in _goals)
+        {
+            saveGoals.WriteLine(goal.GetStringRepresentation());
+        }
+        _goals.Clear();
+    }
+
+
+
+
+
+
+    // setters
+    private static string SetGoalName()
+    {
+        Console.Write("\nWhat is the name of the goal? : ");
+        string _goalName = Console.ReadLine();
+        return _goalName;
+    }
+
+    private static int SetGoalPoint()
     {
         Console.Write("\nEnter the amount of point you want to achieve: ");
         int _goalPoint = int.Parse(Console.ReadLine());
         return _goalPoint;
     }
 
-    private string SetGoalDescription()
+    private static string SetGoalDescription()
     {
         Console.Write("\nWrite a short description of the goal: ");
         string _goalDescription = Console.ReadLine();
         return _goalDescription;
     }
 
-    private int SetBonusPoint()
+    private static int SetBonusPoint()
     {
         Console.Write("\nEnter the amount of bonus point you want to achieve for this goal: ");
         int _bonusPoint = int.Parse(Console.ReadLine());
         return _bonusPoint;
     }
 
-    private int SetCheckListCount()
+    private static int SetCheckListCount()
     {
         Console.Write("\nHow many times do you want to set for this goal to be completed? : ");
         int _checklistCount = int.Parse(Console.ReadLine());
@@ -198,12 +241,12 @@ public class GoalHolder {
             }
             if (goalName == "Checklist Goals")
             {
-                CheckListGoal checkListGoal = new(name: contents[0].Trim(), description: contents[1].Trim(), points: int.Parse(contents[2].Trim()), goal: goalName, bonus: int.Parse(contents[3].Trim()), target: int.Parse(contents[4].Trim()));
+                ChecklistGoal checkListGoal = new(name: contents[0].Trim(), description: contents[1].Trim(), points: int.Parse(contents[2].Trim()), goal: goalName, bonus: int.Parse(contents[3].Trim()), target: int.Parse(contents[4].Trim()));
                 bool isComplete = bool.Parse(contents[6]);
                 if (isComplete)
                 {
                     checkListGoal.SetCheckMark();
-                    checkListGoal.SetIsCompleteToTrue();
+                    checkListGoal.CompleteGoal();
                 } 
                 checkListGoal.AddSaveAmountCompleted(int.Parse(contents[5].Trim()));
                 initialGoal.Add(checkListGoal);
