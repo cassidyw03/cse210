@@ -1,4 +1,0 @@
-class UserData
-{
-    // account information 
-}
